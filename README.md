@@ -12,7 +12,7 @@ Test & benchmark suite available on the [GitHub repository](https://github.com/n
 
 - Streaming API for hashing large data efficiently.
 - MAC (Message Authentication Code) support for data integrity verification.
-- - **Performance**: Utilizes AVX2 instructions for high-speed hashing on x86_64 architectures.
+- **Performance**: Utilizes AVX2 instructions for high-speed hashing on x86_64 architectures.
 - **Compatibility**: Works with .NET 8 and later versions (scalar fallback on non-x86_64 platforms).
 - **Simplicity**: Easy to integrate into existing .NET applications with minimal setup.
 - **Security**: Implements the Blake2b hash function, known for its security and speed.
