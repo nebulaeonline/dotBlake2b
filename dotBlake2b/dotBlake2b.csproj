@@ -4,10 +4,10 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
       <PackageId>nebulae.dotBlake2b</PackageId>
-      <Version>0.2.8</Version>
+      <Version>0.3.0</Version>
       <Authors>Robert C. Horvath III</Authors>
       <Company>Nebulae Foundation LLC</Company>
-      <Description>Pure .NET 8 SIMD-accelerated BLAKE2b hashing library</Description>
+      <Description>.NET 8 SIMD-accelerated BLAKE2b hashing library wrapper</Description>
       <PackageTags>blake2b hashing crypto dotnet simd aot</PackageTags>
       <RepositoryUrl>https://github.com/nebulaeonline/dotBlake2b</RepositoryUrl>
       <RepositoryType>git</RepositoryType>
@@ -19,12 +19,14 @@
       <PackageReadmeFile>docs\README.md</PackageReadmeFile>
     <Nullable>enable</Nullable>
     <RootNamespace>nebulae.dotBlake2b</RootNamespace>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
 
     <ItemGroup>
         <None Include="..\README.md" Pack="true" PackagePath="docs">
             <CopyToOutputDirectory>Never</CopyToOutputDirectory>
         </None>
+        <None Include="runtimes\**\native\*" Pack="true" PackagePath="runtimes\" CopyToOutputDirectory="PreserveNewest" />
     </ItemGroup>
     
 </Project>

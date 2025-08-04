@@ -27,7 +27,6 @@ public class Blake2bBench
     [Benchmark(Baseline = true)]
     public void Scalar()
     {
-        Blake2b.ForceScalar = true;
         Blake2b.ComputeHash(_input, _output, 64);
     }
 
@@ -37,7 +36,6 @@ public class Blake2bBench
         if (!System.Runtime.Intrinsics.X86.Avx2.IsSupported)
             return;
 
-        Blake2b.ForceScalar = false;
         Blake2b.ComputeHash(_input, _output, 64);
     }
 }

@@ -1,6 +1,6 @@
 # dotBlake2b
 
-A pure .NET 8+ AVX2-accelerated (x86_64) implementation of the Blake2b hash function. This library is designed to be fast and efficient, leveraging the latest advancements in .NET for optimal performance.
+A .NET 8+ SSE4-accelerated (x86_64) wrapper for the reference Blake2b hash function. This library is designed to be fast and efficient, leveraging the latest advancements in .NET for optimal performance.
 
 Test & benchmark suite available on the [GitHub repository](https://github.com/nebulaeonline/dotBlake2b).
 
@@ -12,19 +12,18 @@ Test & benchmark suite available on the [GitHub repository](https://github.com/n
 
 - Streaming API for hashing large data efficiently.
 - MAC (Message Authentication Code) support for data integrity verification.
-- **Performance**: Utilizes AVX2 instructions for high-speed hashing on x86_64 architectures.
-- **Compatibility**: Works with .NET 8 and later versions (scalar fallback on non-x86_64 platforms).
+- **Performance**: Utilizes SSE4/neon instructions for high-speed hashing on x86_64 & aarch64 architectures.
 - **Simplicity**: Easy to integrate into existing .NET applications with minimal setup.
 - **Security**: Implements the Blake2b hash function, known for its security and speed.
 - **No External Dependencies**: A self-contained library with no external dependencies, ensuring easy deployment.
-- **Cross-Platform**: Compatible with any platform that supports .NET 8+.
+- **Cross-Platform**: Compatible with .NET 8+ Windows & Linux x64 and MacOS (x64 & Apple Silicon).
 
 ---
 
 ## Requirements
 
 - .NET 8 or later
-- AVX2-capable CPU for optimal performance
+- SSE4 or neon-capable CPU
 
 ---
 

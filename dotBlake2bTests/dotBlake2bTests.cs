@@ -23,7 +23,6 @@ public class dotBlake2bTests
         byte[] inputBytes = Encoding.UTF8.GetBytes(input);
 
         // Test with scalar path
-        Blake2b.ForceScalar = false;
         Blake2b.ComputeHash(inputBytes, output, 64);
         string actualScalar = ToHex(output);
         Assert.Equal(expectedHex, actualScalar);
@@ -31,7 +30,6 @@ public class dotBlake2bTests
         // Test with SIMD path (if available)
         if (System.Runtime.Intrinsics.X86.Avx2.IsSupported)
         {
-            Blake2b.ForceScalar = false;
             Blake2b.ComputeHash(inputBytes, output, 64);
             string actualSimd = ToHex(output);
             Assert.Equal(expectedHex, actualSimd);
