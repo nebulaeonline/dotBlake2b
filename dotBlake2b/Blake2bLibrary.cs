@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices;
+﻿using System.Reflection;
+using System.Runtime.InteropServices;
 
 namespace nebulae.dotBlake2b
 {
@@ -11,6 +12,16 @@ namespace nebulae.dotBlake2b
             if (_isLoaded)
                 return;
 
+            NativeLibrary.SetDllImportResolver(typeof(Blake2bLibrary).Assembly, Resolve);
+
+            _isLoaded = true;
+        }
+
+        private static IntPtr Resolve(string libraryName, Assembly assembly, DllImportSearchPath? searchPath)
+        {
+            if (libraryName != "blake2b")
+                return IntPtr.Zero;
+
             var libName = GetPlatformLibraryName();
             var assemblyDir = Path.GetDirectoryName(typeof(Blake2bLibrary).Assembly.Location)!;
             var fullPath = Path.Combine(assemblyDir, libName);
@@ -18,8 +29,7 @@ namespace nebulae.dotBlake2b
             if (!File.Exists(fullPath))
                 throw new DllNotFoundException($"Could not find native Blake2b library at {fullPath}");
 
-            NativeLibrary.Load(fullPath);
-            _isLoaded = true;
+            return NativeLibrary.Load(fullPath);
         }
 
         private static string GetPlatformLibraryName()
